@@ -40,7 +40,13 @@ pipeline {
 
         stage('Push Build Result To GitHub Deploy Branch') {
             steps {
-                withCredentials([usernamePa                withCredentials([usernusernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_TOKEN')]) {
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'github-token',
+                        usernameVariable: 'GIT_USERNAME',
+                        passwordVariable: 'GIT_TOKEN'
+                    )
+                ]) {
                     sh '''
                         cd ${DEPLOY_DIR}
                         git init
@@ -67,7 +73,8 @@ pipeline {
                     docker rm -f ${APP_NAME} || true
                     docker build -t ${APP_NAME}:latest deploy_clone
                     docker run -d --name ${APP_NAME} -p 3001:3000 ${APP_NAME}:latest
-                                }
+                '''
+            }
         }
     }
 
