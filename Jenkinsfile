@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        REPO_URL = "https://github.com/你的用户名/jenkins-github-demo.git"
+        REPO_URL = "https://github.com/shb755/jenkins-github-demo.git"
         DEPLOY_BRANCH = "deploy"
         APP_NAME = "jenkins-github-demo"
         DEPLOY_DIR = "deploy_workspace"
@@ -50,7 +50,7 @@ pipeline {
                         git add .
                         git commit -m "Deploy build from Jenkins ${BUILD_NUMBER}" || true
 
-                        git remote add origin https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/你的用户名/jenkins-github-demo.git
+                        git remote add origin https://${GIT_USERNAME}:${GIT_TOKEN}@github.com/shb755/jenkins-github-demo.git
 
                         git push -f origin ${DEPLOY_BRANCH}
                     '''
