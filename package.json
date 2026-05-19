@@ -1,0 +1,10 @@
+{
+  "name": "jenkins-github-demo",
+  "version": "1.0.0",
+  "description": "Jenkins GitHub deployment demo",
+  "main": "app.js",
+  "scripts": {
+    "build": "mkdir -p dist && cp app.js dist/app.js && cp package.json dist/package.json",
+    "start": "node app.js"
+  }
+}
